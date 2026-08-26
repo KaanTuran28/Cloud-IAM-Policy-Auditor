@@ -1,0 +1,35 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PassRoleToNewEC2Instance",
+      "Effect": "Allow",
+      "Action": ["iam:PassRole", "ec2:RunInstances"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CreateAccessKeyForAnyUser",
+      "Effect": "Allow",
+      "Action": "iam:CreateAccessKey",
+      "Resource": "*"
+    },
+    {
+      "Sid": "AttachAnyManagedPolicy",
+      "Effect": "Allow",
+      "Action": "iam:AttachUserPolicy",
+      "Resource": "*"
+    },
+    {
+      "Sid": "FullS3Access",
+      "Effect": "Allow",
+      "Action": "s3:*",
+      "Resource": "*"
+    },
+    {
+      "Sid": "EverythingExceptBilling",
+      "Effect": "Allow",
+      "NotAction": "aws-portal:*",
+      "Resource": "*"
+    }
+  ]
+}

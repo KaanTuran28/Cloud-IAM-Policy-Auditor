@@ -1,0 +1,23 @@
+[project]
+name = "cloud-iam-policy-auditor"
+version = "0.1.0"
+description = "Static audit of AWS IAM policy JSON documents for overly permissive statements and privilege-escalation vectors."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Kaan Turan" }]
+dependencies = []
+
+[project.scripts]
+cloud-iam-policy-auditor = "cloud_iam_policy_auditor:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["cloud_iam_policy_auditor"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"

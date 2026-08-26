@@ -1,0 +1,20 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadWriteOwnUploads",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::app-uploads-prod/${aws:userid}/*"
+    },
+    {
+      "Sid": "ReadWriteOwnSessionItems",
+      "Effect": "Allow",
+      "Action": ["dynamodb:GetItem", "dynamodb:PutItem"],
+      "Resource": "arn:aws:dynamodb:eu-central-1:123456789012:table/Sessions",
+      "Condition": {
+        "ForAllValues:StringEquals": { "dynamodb:LeadingKeys": ["${aws:userid}"] }
+      }
+    }
+  ]
+}
